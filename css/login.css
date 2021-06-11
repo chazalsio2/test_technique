@@ -1,0 +1,34 @@
+body{
+    background-image: url(img/clavier.jpg);
+    background-color: rgb(69, 63, 128);
+}
+
+.main{
+    opacity: 95%;
+    height: auto;
+    margin-top: 10%;
+    background-color: rgb(133, 194, 252);
+    border-radius: 25px;
+}
+.int {
+    position: relative;
+   top: 17%;
+}
+.connexion {
+    color: white;
+}
+.mdp2{
+    position: relative;
+    max-width: 400px;
+}
+.email{
+    max-width: 400px;
+}
+
+.btn{
+    width: auto;
+}
+h2.inscription {
+    color: white;
+    text-decoration: none;
+}
