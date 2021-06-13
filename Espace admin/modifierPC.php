@@ -11,30 +11,24 @@
 
             $getid = $_GET['id'];
 
-            $recupuser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
+            $recupuser = $bdd->prepare('SELECT * FROM ordinateur WHERE id = ?');
             $recupuser->execute(array($getid));
 
             if($recupuser->rowCount() > 0) {
 
                 $userinfo = $recupuser->fetch();
                 $id= $userinfo['id'];
-                $email= $userinfo['email'];
-                $pseudo= $userinfo['pseudo'];
-                $ip= $userinfo['ip'];
-                $date_inscription= $userinfo['date_inscription'];
+                $ordinateur= $userinfo['ordinateur'];
 
                 if(isset($_POST['valider'])) {
 
                     $id_saisi = htmlspecialchars($_POST['id']);
-                    $email_saisi = htmlspecialchars($_POST['email']);
-                    $pseudo_saisi = htmlspecialchars($_POST['pseudo']);
-                    $ip_saisi = htmlspecialchars($_POST['ip']);
-                    $date_inscription_saisi = htmlspecialchars($_POST['date_inscription']);
+                    $ordinateur_saisi = htmlspecialchars($_POST['ordinateur']);
 
-                    $update_user = $bdd->prepare('UPDATE utilisateur SET id = ?, email = ?, pseudo = ?, ip = ?, date_inscription = ? WHERE id= ?');
-                    $update_user->execute(array($id_saisi, $email_saisi, $pseudo_saisi, $ip_saisi, $date_inscription_saisi, $getid));
+                    $update_user = $bdd->prepare('UPDATE ordinateur SET id = ?, ordinateur = ? WHERE id= ?');
+                    $update_user->execute(array($id_saisi, $ordinateur_saisi, $getid));
 
-                    header('Location:index.php');
+                    header('Location:ordinateur.php');
 
                 }
 
@@ -176,10 +170,7 @@
                                             <thead class="bg-light">
                                                     <tr class="border-0">
                                                         <th class="border-0">#</th>
-                                                        <th class="border-0">Pseudo</th>
-                                                        <th class="border-0">Email</th>
-                                                        <th class="border-0">Ip</th>
-                                                        <th class="border-0">Date d'inscription</th>
+                                                        <th class="border-0">ordinateur</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -187,17 +178,9 @@
                                                         <form method="POST" action="">
                                                         <td>1</td>
                                                         
+                                                        
                                                         <td>
-                                                        <div class="m-r-2"><input type="text" name="pseudo" value="<?= $pseudo; ?>"></div>
-                                                        </td>
-                                                        <td>
-                                                        <div class="m-r-2"><input type="text" name="email" value="<?= $email; ?>"></div>
-                                                        </td>
-                                                        <td>
-                                                        <div class="m-r-2"><input type="text" name="ip" value="<?= $ip; ?>"></div>
-                                                        </td>
-                                                        <td>
-                                                        <div class="m-r-2"><input type="text" name="date_inscription" value="<?= $date_inscription; ?>"></div>
+                                                        <div class="m-r-2"><input type="text" name="ordinateur" value="<?= $ordinateur; ?>"></div>
                                                         </td>
                                                     
                                                         

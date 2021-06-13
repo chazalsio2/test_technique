@@ -100,6 +100,15 @@
                                             <a class="nav-link" href="index.php">Utilisateur</a>
                                         </li>
                                         <li class="nav-item">
+                                            <a class="nav-link" href="adduser.php">Ajouter utilisateur</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ordinateur.php">Ordinateur</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="addupc.php">Ajouter ordinateur</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" href="deconnexion.php">Déconnexion</a>
                                         </li>
                                         
@@ -131,350 +140,111 @@
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">#</th>
                                                         <th class="border-0">Id</th>
                                                         <th class="border-0">Pseudo</th>
                                                         <th class="border-0">Email</th>
                                                         <th class="border-0">Ip</th>
                                                         <th class="border-0">Date d'inscription</th>
+                                                        <th class="border-0">supprimer</th>
                                                         <th class="border-0">Modifier</th>
-                                                        <th class="border-0">Suprimer</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>1</td>
                                                         <td>
-                                                        <?php 
-                                                            
+                                                      <?php
                                                             $recupuser = $bdd->query('SELECT * FROM utilisateur');
-                                                            if($user = $recupuser->fetch()) {
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                            <div class="m-r-10"><p><?= $user['id'] ?></p></div>
-                                                            <?php
-                                                         }
-                                                        ?>
+
+                                                                <?= $user['id'] ?></p>
+
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
                                                         </td>
+                                                             
                                                         <td>
-                                                        <?php 
-                                                            
+                                                      <?php
                                                             $recupuser = $bdd->query('SELECT * FROM utilisateur');
-                                                            if($user = $recupuser->fetch()) {
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                        <p><?= $user['pseudo'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td> 
-                                                            <?php 
+
+                                                            <p><?= $user['pseudo'] ?></p>
                                                             
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                      <?php
                                                             $recupuser = $bdd->query('SELECT * FROM utilisateur');
-                                                            if($user = $recupuser->fetch()) {
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                        <p><?= $user['email'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?> </td>
-                                                        <td> <?php 
+
+                                                            <p><?= $user['email'] ?></p>
                                                             
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                      <?php
                                                             $recupuser = $bdd->query('SELECT * FROM utilisateur');
-                                                            if($user = $recupuser->fetch()) {
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                        <p><?= $user['ip'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td> <?php 
+
+                                                            <p><?= $user['ip'] ?></p>
                                                             
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                      <?php
                                                             $recupuser = $bdd->query('SELECT * FROM utilisateur');
-                                                            if($user = $recupuser->fetch()) {
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                        <p><?= $user['date_inscription'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td><a href="modifier.php?id=2"><button type="button" class="btn btn-primary">Modifier</button></td>
-                                                        <td><a href="bannir.php?id=<?= $user['id']?>"><button type="button" class="btn btn-danger">suprimer</button></a></td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                    <td>2</td>
-                                                        <td>
-                                                        <?php 
+
+                                                           <p><?= $user['date_inscription']; ?></a></p>
                                                             
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=5');
-                                                            if($user = $recupuser->fetch()) {
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                        <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur');
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                            <div class="m-r-10"><p><?= $user['id'] ?></p></div>
+                                                           <div><p><a href="bannir.php?id=<?= $user['id'];?> " class="btn btn-danger">supprimer</a></p></div>  
                                                             <?php
-                                                         }
-                                                        ?>
+                                                             }
+                                                         
+                                                        ?> 
                                                         </td>
+
                                                         <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=5');
-                                                            if($user = $recupuser->fetch()) {
+                                                        <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur');
+                                                            while($user = $recupuser->fetch()) {
                                                                 ?>
-                                                        <p><?= $user['pseudo'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=5');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['email'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?> </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=5');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['ip'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=5');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['date_inscription'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td><a href="modifier.php?id=5"><button type="button" class="btn btn-primary">Modifier</button></td>
-                                                        <td><a href="bannir.php?id=<?= $user['id']?>"><button type="button" class="btn btn-danger">suprimer</button></a></td>
-                                                         </tr>
-                                                    <tr>
-                                                    <td>3</td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=6');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                            <div class="m-r-10"><p><?= $user['id'] ?></p></div>
+                                                           <div><p><a href="modifier.php?id=<?= $user['id'];?> " class="btn btn-primary">modifier</a></p></div>  
                                                             <?php
-                                                         }
-                                                        ?>
+                                                             }
+                                                         
+                                                        ?> 
                                                         </td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=6');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['pseudo'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=6');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['email'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?> </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=6');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['ip'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=6');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['date_inscription'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td><a href="modifier.php?id=6"><button type="button" class="btn btn-primary">Modifier</button></td>
-                                                        <td><a href="bannir.php?id=<?= $user['id']?>"><button type="button" class="btn btn-danger">suprimer</button></a></td>
-                                                         </tr>
-                                                    </tr>
-                                                    <tr>
-                                                    <td>4</td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=7');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                            <div class="m-r-10"><p><?= $user['id'] ?></p></div>
-                                                            <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=7');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['pseudo'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=7');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['email'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?> </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=7');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['ip'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=7');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['date_inscription'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td><a href="modifier.php?id=7"><button type="button" class="btn btn-primary">Modifier</button></td>
-                                                        <td><a href="bannir.php?id=<?= $user['id']?>"><button type="button" class="btn btn-danger">suprimer</button></a></td>
-                                                         </tr>
-                                                    </tr>
-                                                    <tr>
-                                                    <td>5</td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=9');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                            <div class="m-r-10"><p><?= $user['id'] ?></p></div>
-                                                            <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=9');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['pseudo'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=9');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['email'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?> </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=9');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['ip'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=9');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['date_inscription'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td><a href="modifier.php?id=9"><button type="button" class="btn btn-primary">Modifier</button></td>
-                                                        <td><a href="bannir.php?id=<?= $user['id']?>"><button type="button" class="btn btn-danger">suprimer</button></a></td>
-                                                         </tr>
-                                                    </tr>
-                                                    <tr>
-                                                    <td>6</td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=10');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                            <div class="m-r-10"><p><?= $user['id'] ?></p></div>
-                                                            <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td>
-                                                        <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=10');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['pseudo'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?>
-                                                        </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=10');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['email'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?> </td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=10');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['ip'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td> <?php 
-                                                            
-                                                            $recupuser = $bdd->query('SELECT * FROM utilisateur WHERE id=10');
-                                                            if($user = $recupuser->fetch()) {
-                                                                ?>
-                                                        <p><?= $user['date_inscription'] ?></p> 
-                                                    <?php
-                                                         }
-                                                        ?></td>
-                                                        <td><a href="modifier.php?id=10"><button type="button" class="btn btn-primary">Modifier</button></td>
-                                                        <td><a href="bannir.php?id=<?= $user['id']?>"><button type="button" class="btn btn-danger">suprimer</button></a></td>
-                                                         </tr>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-                                                    </tr>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                             </div>
@@ -484,6 +254,7 @@
                                 </div>
                             </div>
                         </div>
+                        
         <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
         <!-- bootstap bundle js -->
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
