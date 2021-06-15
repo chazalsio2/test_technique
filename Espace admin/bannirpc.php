@@ -1,5 +1,7 @@
 <?php
 
+     $bdd = new PDO("mysql:host=localhost;dbname=test-technique;charset=utf8", "root", "");
+     session_start();
      // Ordinateur
      if(isset($_GET['id']) AND !empty($_GET['id'])){
         $getid = $_GET['id'];
@@ -9,7 +11,7 @@
 
             $banniruser = $bdd->prepare('DELETE FROM ordinateur WHERE id =?');
             $banniruser->execute(array($getid));
-            header('Location: ordinateur.php');
+            header('Location: index.php');
 
         }else {echo "aucun membre na ete trouver";}
     }else{echo "aucun id en paramètre";}

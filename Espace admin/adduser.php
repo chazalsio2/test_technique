@@ -13,6 +13,9 @@
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
         $password_retype = htmlspecialchars($_POST['password_retype']);
+       
+
+
 
         // vérifie si l'utilisateur existe
         $check = $bdd->prepare('SELECT pseudo, email, password FROM utilisateur WHERE email = ?');
@@ -36,26 +39,17 @@
                             // On stock l'adresse IP
                             $ip = $_SERVER['REMOTE_ADDR']; 
 
-                            /*
-                                Pour ceux qui souhaite mettre en place un système de mot de passe oublié, pensez à mettre le champ token dans votre requête
-                                N'oubliez pas également d'ajouter le même champs à votre table utilisateurs
-                                $insert = $bdd->prepare('INSERT INTO utilisateurs(pseudo, email, password, ip, token) VALUES(:pseudo, :email, :password, :ip, :token)');
-                                $insert->execute(array(
-                                    'pseudo' => $pseudo,
-                                    'email' => $email,
-                                    'password' => $password,
-                                    'ip' => $ip,
-                                    'token' =>  bin2hex(openssl_random_pseudo_bytes(24))
-                                ));
-                              */
-                            // On insère dans la base de données
+                        
+                            // On insère dans la base de données ordinateur
                             $insert = $bdd->prepare('INSERT INTO utilisateur(pseudo, email, password, ip) VALUES(:pseudo, :email, :password, :ip)');
                             $insert->execute(array(
                                 'pseudo' => $pseudo,
                                 'email' => $email,
                                 'password' => $password,
-                                'ip' => $ip
+                                'ip' => $ip,
                             ));
+                           
+
                             // On redirige avec le message de succès
                             header('Location:index.php?reg_err=success');
                             die();
@@ -157,9 +151,6 @@
                                             <a class="nav-link" href="adduser.php">Ajouter utilisateur</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="ordinateur.php">Ordinateur</a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" href="addpc.php">Ajouter ordinateur</a>
                                         </li>
                                         <li class="nav-item">
@@ -190,22 +181,41 @@
   <h1 class="box-logo box-title">
   </h1>
     <h1 class="box-title">Ajouter un nouvelle utilisateur</h1>
-  <input type="text" class="box-input" name="pseudo" 
-  placeholder="Nom d'utilisateur" required />
-  
+    <div class="row">
+        <div style="width:40%;">
+        <input type="text" class="box-input" name="pseudo" 
+  placeholder="Nom d'utilisateur" style="width:100%;" required />
+</div>
+<br>
+<br>
+<div style="width:40%;">
     <input type="text" class="box-input" name="email" 
-  placeholder="Email" required />
-  
-  
-  
+  placeholder="Email" required style="width:100%;" />
+  </div>
+  <br>
+<br>
+<div style="width:40%;">
     <input type="password" class="box-input" name="password" 
-  placeholder="Mot de passe" required />
-
-
+  placeholder="Mot de passe" required style="width:100%;" />
+  </div>
+  <br>
+<br>
+<div style="width:40%;">
   <input type="password" class="box-input" name="password_retype" 
-  placeholder="Re_tapez le mot de passe" required />
+  placeholder="Re_tapez le mot de passe" required style="width:100%;" />
+
+        </div>
   
-    <input type="submit" name="submit" value="Ajouter utilisateur" class="box-button" />
+</div>
+<br>
+<div>
+
+<div class="">
+        <input type="submit" name="submit" value="Ajoutez utilisateur" class="box-button" />
+    </div>
+  
+    
+</div>
 </div>
 </div>
 </div>

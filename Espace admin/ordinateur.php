@@ -9,7 +9,33 @@
         header('Location:admin.php');
         die();
     }
+    if(!empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['id_ordinateur']) && !empty($_POST['id_user']))    
+    {
+        $date = htmlspecialchars($_POST['date']);
+        $time = htmlspecialchars($_POST['time']);
+        $ordinateur = htmlspecialchars($_POST['id_ordinateur']);
+        $utilisateur = htmlspecialchars($_POST['id_user']);
+        $i=0;
+     
+            $insert = 'INSERT INTO relation(id_user, id_ordinateur, date, horaire) VALUES (:date,:time,:id_ordinateur,:id_user)';
+            $test = $bdd->prepare($insert);
+            $test->bindValue(':date',$date);
+            $test->bindValue(':time',$time);
+            $test->bindValue(':id_ordinateur',$ordinateur);
+            $test->bindValue(':id_user',$utilisateur);
+            $test->execute(array(
+                'id_ordinateur'->$ordinateur,
+                'id_user'->$utilisateur,
+                'date'->$date,
+                'horaire'->$time
+            ));
+            header('Location:index.php');
+        }else {
+            echo"ça marche pas zebi";
+    
+        }
 
+            
 ?>
 
 
@@ -125,91 +151,58 @@
             </div>
         </div>  
     
-
+    <form action="" method="post">     
         <div class="container">
             <div class="row">
                 <div class="col-2">
 
                 </div>
-                <div class="col-10">
-        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Utilisateur</h5>
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead class="bg-light">
-                                                    <tr class="border-0">
-                                                        <th class="border-0">Id</th>
-                                                        <th class="border-0">Ordinateur</th>
-                                                        <th class="border-0">Modifier</th>
-                                                        <th class="border-0">Suprimer</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                        <td>
-                                                      <?php
-                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
-                                                            while($user = $recupuser->fetch()) {
-                                                                ?>
-
-                                                                <?= $user['id'] ?></p>
-
-                                                           <?php
-                                                             }
+                
+    <div class="col-2">
+    <select class=form-control style="max-width:150px;" >
+  <?php
+        $recupuser = $bdd->query('SELECT DISTINCT * FROM utilisateur WHERE NOT EXISTS (SELECT * FROM relation WHERE id_user = id)');
+        while($user = $recupuser->fetch()) {
+        ?>
+       <option value="<?= $user['id'] ?>" name="id_user"><?= $user['id'] ?></option>
+        
+        <?php
+        }
                                                          
-                                                        ?> 
-                                                        </td>
-                                                             
-                                                        <td>
-                                                      <?php
-                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
-                                                            while($user = $recupuser->fetch()) {
-                                                                ?>
-
-                                                            <p><?= $user['ordinateur'] ?></p>
-                                                            
-                                                           <?php
-                                                             }
+        ?> 
+        </select>   
+    </div>
+    <div class="col-2">
+        <select class=form-control style="max-width:150px;" >
+  <?php
+        $recupuser = $bdd->query('SELECT DISTINCT * FROM ordinateur WHERE NOT EXISTS (SELECT * FROM relation WHERE id_ordinateur = id)');
+        while($user = $recupuser->fetch()) {
+        ?>
+       <option value="<?= $user['id'] ?>" name="id_ordinateur"><?= $user['id'] ?></option>
+        
+        <?php
+        }
                                                          
-                                                        ?> 
-                                                        </td>
-
-                                                        <td>
-                                                        <?php
-                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
-                                                            while($user = $recupuser->fetch()) {
-                                                                ?>
-                                                           <div><p><a href="bannirpc.php?id=<?= $user['id'];?> " class="btn btn-danger">supprimer</a></p></div>  
-                                                            <?php
-                                                             }
-                                                         
-                                                        ?> 
-                                                        </td>
-
-                                                        <td>
-                                                        <?php
-                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
-                                                            while($user = $recupuser->fetch()) {
-                                                                ?>
-                                                           <div><p><a href="modifierPC.php?id=<?= $user['id'];?> " class="btn btn-primary">modifier</a></p></div>  
-                                                            <?php
-                                                             }
-                                                         
-                                                        ?> 
-                                                        </td>
-                                                        </tr>
-                                                </tbody>
-                                            </table>
-                                            </div>
-                                    </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
+        ?> 
+        </select>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="col-2">
+        <input type="date" id="date" name="date">
+    </div>
+    <div class="col-2">
+        <input type="time" id="time" name="time">
+    </div>
+    <br>
+    <div class="col-2">
+        <input type="submit" name="submit" value="Attribuer" class="box-button" />
+    </div>
+       
+    </div>
+</div>
+ </form>
         <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
         <!-- bootstap bundle js -->
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>

@@ -103,10 +103,7 @@
                                             <a class="nav-link" href="adduser.php">Ajouter utilisateur</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="ordinateur.php">Ordinateur</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="addupc.php">Ajouter ordinateur</a>
+                                            <a class="nav-link" href="addpc.php">Ajouter ordinateur</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="deconnexion.php">Déconnexion</a>
@@ -254,6 +251,193 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="container">
+            <div class="row">
+                <div class="col-2">
+
+                </div>
+
+
+                <div class="container">
+            <div class="row">
+                <div class="col-2">
+
+                </div>
+                <div class="col-10">
+        <div class="col-xl-auto col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Ordinateur</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">Id</th>
+                                                        <th class="border-0">Ordinateur</th>
+                                                        <th class="border-0">Modifier</th>
+                                                        <th class="border-0">Suprimer</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                        <td>
+                                                      <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+
+                                                                <?= $user['id'] ?></p>
+
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+                                                             
+                                                        <td>
+                                                      <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+
+                                                            <p><?= $user['ordinateur'] ?></p>
+                                                            
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                        <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+                                                           <div><p><a href="bannirpc.php?id=<?= $user['id'];?> " class="btn btn-danger">supprimer</a></p></div>  
+                                                            <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                        <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM ordinateur');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+                                                           <div><p><a href="modifierPC.php?id=<?= $user['id'];?> " class="btn btn-primary">modifier</a></p></div>  
+                                                            <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="container">
+                                  <div class="row">
+                                        <div class="col-2">
+
+                                        </div>
+                                        <div class="col-10">
+        <div class="col-xl-auto col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Atribution</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">Id_Utilisateur</th>
+                                                        <th class="border-0">Id_Ordinateur</th>
+                                                        <th class="border-0">Date d'emprint</th>
+                                                        <th class="border-0">Horaire</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                      <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM relation');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+
+                                                                <?= $user['id_user'] ?></p>
+
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+                                                             
+                                                        <td>
+                                                      <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM relation');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+
+                                                            <p><?= $user['id_ordinateur'] ?></p>
+                                                            
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                      <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM relation');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+
+                                                            <p><?= $user['date'] ?></p>
+                                                            
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                        <td>
+                                                      <?php
+                                                            $recupuser = $bdd->query('SELECT * FROM relation');
+                                                            while($user = $recupuser->fetch()) {
+                                                                ?>
+
+                                                            <p><?= $user['horaire'] ?></p>
+                                                            
+                                                           <?php
+                                                             }
+                                                         
+                                                        ?> 
+                                                        </td>
+
+                                                       
+
+                                                        
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            </div>
+                                  </div>  
+                                
+                
                         
         <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
         <!-- bootstap bundle js -->

@@ -44,7 +44,7 @@
                                 'ordinateur' => $ordinateur
                             ));
                             // On redirige avec le message de succès
-                            header('Location:ordinateur.php?reg_err=success');
+                            header('Location:index.php?reg_err=success');
                             die();
                         }else{ header('Location: adduser.php?reg_err=ordinateur'); die();}
                     }else{ header('Location: adduser.php?reg_err=already'); die();}
@@ -140,9 +140,6 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="adduser.php">Ajouter utilisateur</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="ordinateur.php">Ordinateur</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="addpc.php">Ajouter ordinateur</a>

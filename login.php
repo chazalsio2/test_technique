@@ -60,7 +60,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">connexion</button>
+                                <button type="submit" class="btn btn-primary btn-block">connexion</button><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="Espace admin/admin.php"class="btn btn-primary btn-block">Espace admin</a>
                             </div>   
                         </form>
                         <h2 class="inscription"><a href="inscription.php" style="text-decoration: none; color:white;">Inscription</h2></a>
